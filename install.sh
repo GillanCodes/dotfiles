@@ -37,4 +37,12 @@ link "$DOTFILES/yazi"          "$HOME/.config/yazi"
 link "$DOTFILES/tmux/.tmux"    "$HOME/.tmux"
 link "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
+if [ ! -f "$HOME/.config/kitty/local.conf" ]; then
+    cat > "$HOME/.config/kitty/local.conf" <<EOF
+# Local Kitty overrides
+# Example:
+# font_size 16
+EOF
+fi
+
 echo "✅ Done!"
