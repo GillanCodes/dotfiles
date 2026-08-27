@@ -31,7 +31,7 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
-	{ run = '${EDITOR:-nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" },
+	{ run = '${EDITOR:-nvim} %s1', desc = "$EDITOR", block = true, for = "unix" },
 	#{ run = "${EDITOR:-vi} %s", desc = "$EDITOR",      for = "unix", block = true },
 	{ run = "code %s",          desc = "code",         for = "windows", orphan = true },
 	{ run = "code -w %s",       desc = "code (block)", for = "windows", block = true },
@@ -44,12 +44,18 @@ edit = [
 # 	{ run = "mediainfo %s1; echo 'Press enter to exit'; read _", block = true, desc = "Show media info", for = "unix" },
 # 	{ run = "mediainfo %s1 & pause", block = true, desc = "Show media info", for = "windows" },
 # ]
+#play = [
+#	# { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
+#	{ run = 'mpv -vo=kitty "$@"', block = true, for = "unix" },
+#	{ run = 'mpv "$@"' },
+#	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
+#	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+#]
 play = [
-	# { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-	{ run = 'mpv --no-config -vo=kitty "$@"', block = true, for = "unix" },
-	{ run = 'mpv "$@"' },
-	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
-	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
+    { run = 'mpv --vo=kitty %s1', block = true, for = "unix" },
+    { run = 'mpv --force-window %s1', orphan = true, for = "unix" },
+    { run = 'mpv --force-window %*', orphan = true, for = "windows" },
+    { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
 open = [
 	{ run = "xdg-open %s1",    desc = "Open", for = "linux" },
