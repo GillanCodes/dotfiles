@@ -77,6 +77,7 @@ return {
                                 ["<S-Tab>"] = { "select_prev", "fallback" },
                                 ["<Tab>"] = { "select_next", "fallback" },
                                 ["<C-Leader>"] = { "show", "hide" },
+                                ["<CR>"] = {'accept', 'fallback'}
                         },
                         appearance = {
                                 nerd_font_variant = "mono",
